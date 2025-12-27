@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const durationInput = document.getElementById('duration');
     const stopModeSelect = document.getElementById('stopMode');
     const weightModeSelect = document.getElementById('weightMode');
+    const showWeightsCheckbox = document.getElementById('showWeights');
 
     // Modal Elements
     const modal = document.getElementById('resultModal');
@@ -48,6 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners
     updateWheelBtn.addEventListener('click', updateWheel);
     weightModeSelect.addEventListener('change', updateWheel);
+
+    showWeightsCheckbox.addEventListener('change', (e) => {
+        wheel.setShowWeights(e.target.checked);
+    });
 
     csvInput.addEventListener('change', (e) => {
         const file = e.target.files[0];

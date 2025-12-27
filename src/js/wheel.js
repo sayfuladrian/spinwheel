@@ -20,6 +20,11 @@ export class Wheel {
         this.draw();
     }
 
+    setShowWeights(show) {
+        this.showWeights = show;
+        this.draw();
+    }
+
     draw() {
         const ctx = this.ctx;
         const centerX = this.canvas.width / 2;
@@ -48,10 +53,16 @@ export class Wheel {
             ctx.rotate(midAngle);
             ctx.textAlign = 'right';
             ctx.fillStyle = '#fff';
-            ctx.font = 'bold 16px Arial';
-            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.font = 'bold 18px "Segoe UI", sans-serif'; // Improved font
+            ctx.shadowColor = 'rgba(0,0,0,0.3)'; // Softer shadow
             ctx.shadowBlur = 4;
-            ctx.fillText(segment.name, radius - 10, 5);
+
+            let label = segment.name;
+            if (this.showWeights) {
+                label += ` (${segment.weight})`;
+            }
+
+            ctx.fillText(label, radius - 20, 6);
             ctx.restore();
         });
 

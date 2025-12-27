@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin Wheel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spin Wheel</h1>
+        </header>
+
+        <main>
+            <div class="controls-panel">
+                <section class="input-section">
+                    <h2>Data Input</h2>
+                    <p>Format: Name, Group, Weight</p>
+                    <textarea id="dataInput" rows="10">Alice, GroupA, 1
+Bob, GroupA, 1
+Charlie, GroupB, 1
+David, GroupB, 1
+Eve, GroupC, 2</textarea>
+
+                    <div class="file-input-wrapper">
+                        <label for="csvInput">Import CSV:</label>
+                        <input type="file" id="csvInput" accept=".csv">
+                    </div>
+
+                    <button id="updateWheelBtn">Update Wheel</button>
+                </section>
+
+                <section class="settings-section">
+                    <h2>Settings</h2>
+                    <div class="setting-group">
+                        <label for="duration">Spin Duration (seconds):</label>
+                        <input type="number" id="duration" value="5" min="1" max="60">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="stopMode">Stop Mode:</label>
+                        <select id="stopMode">
+                            <option value="auto">Automatic</option>
+                            <option value="manual">Manual</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="weightMode">Weight Strategy:</label>
+                        <select id="weightMode">
+                            <option value="individual">Individual Weights</option>
+                            <option value="group">Group Weighted (Equal per Group)</option>
+                        </select>
+                    </div>
+                </section>
+
+                <div class="actions">
+                    <button id="spinBtn" class="primary-btn">SPIN</button>
+                    <button id="stopBtn" class="secondary-btn" disabled>STOP</button>
+                </div>
+            </div>
+
+            <div class="wheel-container">
+                <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                <div class="pointer">▼</div>
+            </div>
+        </main>
+
+        <div id="resultModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Winner!</h2>
+                <p id="winnerName">Name</p>
+                <p id="winnerGroup">Group</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
